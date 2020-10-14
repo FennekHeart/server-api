@@ -10,7 +10,10 @@ const port = 4000;
 const db = require('./db')
 const router = express.Router();
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://52.91.107.120:4000'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 app.get('/chargers', (req, res) => {
