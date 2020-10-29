@@ -1,20 +1,16 @@
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const passportHTTP = require('passport-http');
 const app = express();
-const port = 4000;
+const port = 8080;
 const db = require('./db')
 const router = express.Router();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/chargers', (req, res) => {
